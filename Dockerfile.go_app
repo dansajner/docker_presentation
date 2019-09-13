@@ -1,0 +1,5 @@
+FROM alpine
+
+ADD myapp /
+
+CMD /myapp
