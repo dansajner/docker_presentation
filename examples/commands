@@ -1,0 +1,21 @@
+docker build -t ruby_demo -f Dockerfile.ruby .
+docker build -t python_demo -f Dockerfile.python .
+docker build -t node_demo -f Dockerfile.node .
+docker build -t go_demo -f Dockerfile.golang .
+
+mkdir go_build
+cp hello.go go_build
+cd go_build
+docker run --rm -v "$PWD":/usr/src/go_app -w /usr/src/go_app golang go build -v
+docker build -t go_app -f Dockerfile.go_app .
+
+docker volume create pg_data
+docker run -it --rm --name pg_demo -v pg_data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+docker exec -it pg_demo psql -U postgres
+CREATE DATABASE pg_demo;
+
+docker volume create mssql_data
+docker run -it --rm --name mssql_demo -v mssql_data:/var/opt/mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -d mcr.microsoft.com/mssql/server
+docker exec -it mssql_demo /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P yourStrong(!)Password
+
+
