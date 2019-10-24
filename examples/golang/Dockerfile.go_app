@@ -1,5 +1,5 @@
 FROM alpine
 
-ADD myapp /
+COPY myapp /
 
 CMD /myapp

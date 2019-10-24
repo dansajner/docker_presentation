@@ -1,5 +1,5 @@
 FROM ruby
 
-ADD hello.rb /
+COPY hello.rb /
 
 CMD ruby /hello.rb

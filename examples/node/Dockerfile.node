@@ -1,5 +1,5 @@
 FROM node
 
-ADD hello.js /
+COPY hello.js /
 
 CMD node /hello.js
