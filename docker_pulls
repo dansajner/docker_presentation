@@ -6,5 +6,3 @@ docker pull node
 docker pull golang
 docker pull alpine
 docker pull postgres
-docker pull mcr.microsoft.com/mssql/server
-docker pull mcr.microsoft.com/powershell
